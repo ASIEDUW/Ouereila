@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width initial-scale=1" >
+    
+    <title>fruit</title>
+    <style>
+        *{
+            margin: 0px;
+            padding: 0px;
+            box-sizing: border-box;
+        }
+        body{
+            background-color: white;
+            
+           
+        }
+        .header{
+            height: 70px;
+            position:fixed;
+            left: 0px;
+            cursor: pointer;
+            right: 0px;
+            top:0px;
+            display: flex;
+            box-shadow: lightgrey 3px 3px;
+            align-items: center;
+           background-color: #FFFFFF;
+            
+        }
+        .logo{
+            left: 10%;
+        }
+        .menu{
+            left: 20%;
+        }
+        .menu ul{
+            display: flex;
+            list-style: none;
+        }
+        .menu ul li ul {
+            display: none;
+            position: relative;
+            background-color: #EEEEEE;
+        }
+        .menu ul li ul li a{
+
+             font-size: 16;
+
+        }
+             
+	  	.menu ul li,.menu ul li a{
+	  		text-decoration: none;
+	  		font-size: 16px;
+	  		padding: 7px;
+	  		color:#1DA1F2;
+            margin: 20px 3px 20px 3px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+	  	}
+
+	  	.menu li:hover,.menu a:hover {
+	  		color: #FFFFFF;
+            background-color: #14171A;
+            border-radius: 5px;
+	  	}
+        .menu ul li:active ul {
+            display: inline-block;
+            margin-top: 20px;
+        }
+      
+        .showmenu{
+            display: block;
+            position: relative;
+        }
+        /*/////////////////////////////////////////////////////////////////////////////*/
+        .content{  
+            width: 100%;
+            float: left;
+            margin-top: 100px;
+            margin-bottom: 50px;
+        }
+      
+        .nav{
+            background-color: #FFFFFF;
+            width: 18%;
+            margin-left: 2%;
+            margin-right: 0.5%;
+            padding: 10px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            
+        }
+        .nav a,li{
+           color: inherit;
+           text-decoration: none;
+        }
+        .nav li{
+           margin-top: 10px;
+        }
+        .nav a:hover{
+           text-decoration: underline;
+        }
+        .main{
+            width: 57%;
+            background-color:#6289ff15;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .main p{
+            font-size: 20px;
+        }
+        .main p,h2{
+            padding: 20px;
+        }
+        .main h2{
+            text-align: center;
+        }
+      
+       
+        /*//////////////////////////////////////////////////*/
+
+        .side{
+            width: 20%;
+            margin-left: 0.5%;
+            margin-right: 2%;
+            right: 0px;
+            transition:  5s linear 0.5s;
+        }
+
+        .frame{
+            width: 100%;
+            height: 200px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            background-image: url("pics/pic1.jpg");
+            background-size: cover;
+        }
+        
+        #back,#forward{
+            font-size: 20px;
+            color: grey;
+            font-weight: bold;
+            margin-top:85px;
+            height: 20px;        
+        }
+
+        #caption{
+            background-color:rgba(20,23,26, 0.6);
+            color: #FFFFFF;
+            height: 40px;
+            padding: 10px;
+            margin-top: 150px;
+        }
+      
+
+        .context{
+            background-color: #1DA1F2;
+            width: 100%;
+            height: 350px;
+            margin-top: 20px;
+            border-radius: 3px;
+            cursor:pointer;
+            top: 50px;
+            padding: 10px 40px 10px 40px;
+        }
+        .context li,a,h3{
+            color: #EEEEEE;
+            margin: 5px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .context a,h3{
+            text-decoration: none;
+        }
+        .context li a:hover{
+            text-decoration: underline;
+        }
+
+
+       .sticky{
+            position: fixed;
+            width: initial;
+            right: 0px;
+            top:10px;
+        }
+
+        .framest{
+            display: none;
+        }
+        .contextst{
+            margin-top: -20px;
+        }
+        .conclass{
+            background-color: rgba(255,255,255,0.3);
+        }
+      
+
+        /*///////////////////////////////////////////////////////////////////////////////////*/
+
+        .footer{
+            clear: both;
+            height: 350px;
+            background-color: #14171A; 
+            padding: 5px 50px 10px 50px;
+        }
+        .brand cp{
+            font-size: 16px;
+        }
+        .brand h2{
+            text-align: center;
+            color: #EEEEEE;
+            cursor: pointer;
+        }
+        .column{
+            column-count: 6;
+        }
+        .column li{
+            color: tomato;
+        }
+        .column a{
+            color: gray;
+            text-decoration: none;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .column a:hover{
+            text-decoration: underline;
+            color: #EEEEEE;
+        }
+     
+        
+        @keyframes fades{
+            0%{
+                opacity: 0.1;
+            }
+            30%{
+                opacity: 0.4;
+            }
+            60%{
+               opacity: 0.6; 
+            }
+            90%{
+                opacity: 0.8;
+            }
+            100%{
+                opacity: 1;
+            }
+        }
+       
+
+
+    </style>
+    
+    <script src="kin.js">
+       
+    </script>
+    <script >
+        const framesls = ["pics/pic1.jpg","pics/pic2.jpg"];
+        const captionls =["Donate to help African countries","God loves a cheerful giver","Please donate in kind"];
+        let framescnt = 0;
+        let clen = captionls.length;
+        var cnt = 0;
+        let contls = document.getElementsByClassName("cont");
+        let labels = document.getElementsByClassName("label");
+        let bgbool="";
+
+        
+        $(function(){
+
+           /* $("#will").click(function(){
+             bgbool = $("#contul li:last-child").css('text-decoration');
+            });*/
+
+           $(".content").ready(function(){
+            var mainhi = "" ;
+           bgbool = $("#contul li:first-child").css('text-decoration');
+           cnt = $(".main").text().length;
+           mainhi = $(".main").css('height');
+           document.getElementById('nav').style.cssText+=`height:calc(${mainhi}-20px)`;
+           });
+        });
+        
+    
+        function onstart(){
+           
+            forwardfun();
+            window.setInterval(forwardfun,5000);
+
+        }
+
+        /*function wil(){
+            var wintop = $(window).scrollTop();
+            var footer = $(".frame").;
+            window.alert(footer);
+        */
+
+        function forwardfun(){
+            framescnt++;
+            if(framescnt==framesls.length){ framescnt = 0; }
+             document.getElementById("frame").style.backgroundImage = `url(${framesls[framescnt]})`;
+             document.getElementById("caption").innerHTML=`<p>${captionls[Math.floor(0+clen*Math.random())]}</p>`
+             
+        }
+
+        function backfun(){
+            
+            if(framescnt==0){ framescnt = framesls.length; }
+            framescnt--;
+            document.getElementById("frame").style.backgroundImage = `url(${framesls[framescnt]})`;
+            document.getElementById("caption").innerHTML=`<p>${captionls[Math.floor(0+clen*Math.random())]}</p>`;
+        }
+
+       function scrollfun(){
+    
+          if(window.pageYOffset >250) {
+            document.getElementById("side").classList.add('sticky');
+            document.getElementById("frame").classList.add('framest');
+            document.getElementById("context").classList.add('contextst');
+          }
+          
+          else{
+            document.getElementById("side").classList.remove('sticky');
+            document.getElementById("frame").classList.remove('framest');
+            document.getElementById("context").classList.remove('contextst');
+            
+          }
+          
+          
+           document.getElementById('side').scrollTop(-500);
+        }
+        
+
+        /*function contfun(hi){
+             
+            if(hi<30){
+                contls[0].classList.add("conclass");
+            }
+            else if( hi<60){
+                contls[1].classList.add("conclass");
+            }
+            else{
+            for(let i = 0;i<contls.length;i++){
+                contls[i].classList.remove("conclass");
+            }
+        }
+            
+        }*/
+
+        function mouseenter(num){
+
+            for(let i = 0;i<contls.length;i++){
+                contls[i].classList.remove("conclass");
+            }
+
+            contls[num].classList.add("conclass");
+        }
+
+        function showmenu(num){
+            window.alert("recipe")
+            document.getElementById("label").classList.add("showmenu")
+            /*labels[num].classList.add("showmenu");*/
+        }
+        function hidemenu(num){
+            labels[num].classList.remove("showmenu");
+        }
+
+
+
+    </script>
+</head>
+<body onload="onstart()" onscroll="scrollfun()">
+   
+    <div class="header" >
+        <div class="header logo">
+            <img src="em3.png" width="50" height="50">
+        </div>
+        <div class="header menu">
+            <ul>
+                <li onclick="wil()"><a href="#">Home</a></li>
+                <li class="menu label" id="label" onclick="showmenu(0)" onmouseleave="hidemenu(0)">Recipes ⯆
+                    <ul>
+                        <li><a href="">Potato</a></li>
+                        <li><a href="">Potato</a></li>
+                        <li><a href="">Potato</a></li>
+                        <li><a href="">Potato</a></li>
+                        <li><a href="">More</a></li>
+                    </ul>
+                </li>
+                <li class="menu label" onclick="showmenu(0)" onmouseleave="hidemenu(0)">Programming ⯆
+                    <ul>
+                        <li><a href="">Pyhton</a></li>
+                        <li><a href="">DataBase</a></li>
+                        <li><a href="">Networking</a></li>
+                        <li><a href="">Mobile development</a></li>
+                        <li><a href="">More</a></li>
+                    </ul>
+                </li>
+                <li>Classroom ⯆
+                    <ul>
+                        <li><a href="">Biology</a></li>
+                        <li><a href="">Mathematics</a></li>
+                        <li><a href="">Computer</a></li>
+                        <li><a href="">English</a></li>
+                        <li><a href="">More</a></li>
+                    </ul>
+                </li>
+                <li>Comics ⯆
+                    <ul>
+                        <li><a href="">Gallery</a></li>
+                        <li><a href="">Videos</a></li>
+                        <li><a href="">Music</a></li>
+                        <li><a href="">More</a></li>
+                    </ul>
+                </li>
+                <li>LifeHack ⯆
+                    <ul>
+                        <li><a href="">Health</a></li>
+                        <li><a href="">Stories</a></li>
+                        <li><a href="">DIY</a></li>
+                        <li><a href="">More</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="content nav" id="nav" >
+        <ul type="none">
+            <li><a href="#">Orange is the best fruit try it out</a></li>
+            <li><a href="#">Orange is the best fruit try it</a></li>
+            <li><a href="#">Orange is the best fruit try it</a></li>
+            <li><a href="#">Orange is the best fruit try it</a></li>
+            <li><a href="#">Orange is the best fruit try it</a></li>
+            <li><a href="#">Orange is the best fruit try it</a></li>
+            <li><a href="#">Orange is the best fruit try it</a></li>
+            <li><a href="#">Orange is the best fruit try it</a></li>
+            <li><a href="#">Orange is the best fruit try it</a></li>
+            <li><a href="#">Orange is the best fruit try it</a></li>
+            <li><a href="#">Orange is the best fruit try it</a></li>
+            <li><a href="#">Orange is the best fruit try it</a></li>
+            <li><a href="#">Orange is the best fruit try it</a></li>
+            <li><a href="#">Orange is the best fruit try it</a></li>
+            <li><a href="#">Orange is the best fruit try it</a></li>
+            <li><a href="#">Orange is the best fruit try it</a></li>
+            <li><a href="#">Orange is the best fruit try it</a></li>
+            <li><a href="#">Orange is the best fruit try it</a></li>
+            <li><a href="#">Orange is the best fruit try it</a></li>
+            <li><a href="#">Orange is the best fruit try it</a></li>
+            <li><a href="#">Orange is the best fruit try it</a></li>
+            <li><a href="#">Orange is the best fruit try it</a></li>
+            <li><a href="#">Orange is the best fruit try it</a></li>
+            <li><a href="#">Orange is the best fruit try it</a></li>
+            <li><a href="#">Orange is the best fruit try it</a></li>
+            <li><a href="#">Orange is the best fruit try it</a></li>
+            <li><a href="#">Orange is the best fruit try it</a></li>
+            <li><a href="#">Orange is the best fruit try it</a></li>
+            <li><a href="#">Orange is the best fruit try it</a></li>
+       
+        </ul>
+         
+    </div>
+    <div class="content main" id="main" a >
+            <h2>This is My First Page</h2>
+        <p>
+            <span onmouseenter="mouseenter(0)" >
+            Importants of diet
+            <br>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+            proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+            proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            <br>
+            <br>
+            </span>
+            Types of diet
+            <br>
+            <span onmouseenter="mouseenter(1)">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+            proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            <br>
+            <br>
+            </span>
+            <span onmouseenter="mouseenter(0)" >
+                Importants of diet
+                <br>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                <br>
+                <br>
+                </span>
+                Types of diet
+                <br>
+                <span onmouseenter="mouseenter(1)">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                <br>
+                <br>
+                </span>
+                <span onmouseenter="mouseenter(0)" >
+                    Importants of diet
+                    <br>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    <br>
+                    <br>
+                    </span>
+                    Types of diet
+                    <br>
+                    <span onmouseenter="mouseenter(1)">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    <br>
+                    <br>
+                    </span>
+        
+        
+        </p>
+    </span class="comment"> 
+               comment
+    </span>
+
+    </div>
+    <div class="content side" id="side" >
+        <div class="frame" id="frame">
+              
+              <div id="back" onclick="backfun()">&#10094;</div>
+              <div id="caption">Hello</div>
+      		  <div id="forward" onclick="forwardfun()">&#10095;</div>
+        </div>
+
+        <div class="context" id="context">
+         <h3><u>Content</u></h3>
+         <ul type="square" id="contul">
+            <li class="cont" id="cont"><a href="#cont1">Importants of diet</a></li>
+            <li class="cont" id="cont"><a href="#cont2">Types of diet</a></li>
+            <li class="cont" id="cont"><a href="#cont3">How to have a deep sleep</a></li>
+            <li class="cont" id="cont"><a href="#cont4">Coding the sleep</a></li>
+            <li class="cont" id="cont"><a href="#cont5">What to eat after school</a></li>
+            <li class="cont" id="cont"><a href="#cont6">King and Queen dance</a></li>
+            <li class="cont" id="cont"><a href="#cont7">Cofee</a></li>
+            <li class="cont" id="cont"><a href="#cont8">Quava</a></li>
+            <li class="cont" id="cont"><a href="#cont9">Acnes treatment
+            <li class="cont" id="cont"><a href="#cont10">foreskin</a></li>
+        </a></li>
+         </ul>
+        </div>
+       
+    </div>
+    <div class="footer"  id="footer">
+        <div class="brand"><h2>Oüereila  <cp>©2023</cp></h2></div>
+        <div class="column">
+            <ul type="square">
+                <li><a href="#">Python</a></li>
+                <li><a href="#">C++</a></li>
+                <li><a href="#">Java</a></li>
+                <li><a href="#">HTML</a></li>
+                <li><a href="#">CSS</a></li>
+                <li><a href="#">Linux</a></li>
+                <li><a href="#">Dart</a></li>
+                <li><a href="#">Flutter</a></li>
+                <li><a href="#">MySQL</a></li>
+                <li><a href="#">English rules</a></li>
+                <li><a href="#">Logarithm</a></li>
+                <li><a href="#">Orange</a></li>
+                <li><a href="#">Orange</a></li>
+                <li><a href="#">Orange</a></li>
+                <li><a href="#">Orange</a></li>
+                <li><a href="#">Orange</a></li>
+                <li><a href="#">Orange</a></li>
+                <li><a href="#">Orange</a></li>
+                <li><a href="#">Orange</a></li>
+                <li><a href="#">Orange</a></li>
+                <li><a href="#">Orange</a></li>
+                <li><a href="#">Orange</a></li>
+                <li><a href="#">Orange</a></li>
+                <li><a href="#">Orange</a></li>
+                <li><a href="#">Orange</a></li>
+                <li><a href="#">Orange</a></li>
+                <li><a href="#">Orange</a></li>
+                <li><a href="#">Orange</a></li>
+                <li><a href="#">Orange</a></li>
+                <li><a href="#">Orange</a></li>
+                <li><a href="#">Orange</a></li>
+                <li><a href="#">Orange</a></li>
+                <li><a href="#">Orange</a></li>
+                <li><a href="#">Orange</a></li>
+                <li><a href="#">Orange</a></li>
+                <li><a href="#">Orange</a></li>
+                <li><a href="#">Orange</a></li>
+                <li><a href="#">Orange</a></li>
+                <li><a href="#">Orange</a></li>
+                <li><a href="#">Orange</a></li>
+                <li><a href="#">Orange</a></li>
+                <li><a href="#">Orange</a></li>
+                <li><a href="#">Orange</a></li>
+                <li><a href="#">Orange</a></li>
+                <li><a href="#">Orange</a></li>
+                <li><a href="#">Orange</a></li>
+                <li><a href="#">Orange</a></li>
+                <li><a href="#">Orange</a></li>
+                <li><a href="#">Orange</a></li>
+                <li><a href="#">Orange</a></li>
+                <li><a href="#">Orange</a></li>
+                <li><a href="#">Orange</a></li>
+      
+           
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
